@@ -1,0 +1,89 @@
+use jb;
+
+select * from jb1;
+select * from company_table;
+select* from details_table;
+select* from job_table;
+select* from Final_table;
+select * from Book2;
+select * from Book4;
+select * from Book5;
+drop table book3;
+
+update jb1
+set Location='Delhi, India   On-site'
+where location like 'Delhi, Delhi, India                  On-site' ;
+
+update jb1
+set Location='Delhi, India   Hybrid'
+where location like 'Delhi, Delhi, India                  Hybrid';
+
+update jb1
+set Location='New Delhi, India   Hybrid'
+where location like 'New Delhi, Delhi, India                  On-site';
+
+SELECT Job_id,Job_title,Company_name,Work_model,Detail_id,Level_of_job, 
+case when Location like '%On-site%' then REPLACE(Location, 'On-site', '')
+     when location like '%Hybrid%' then REPLACE(Location, 'Hybrid', '') 
+	 when location like '%Remote%' then REPLACE(Location, 'Remote', '')
+	 else location
+	 end
+	 as loc
+from book2;
+
+
+select *,
+case when Location like '%Andhra Pradesh%' then 'Andhra Pradesh'
+     when Location like '%Haryana%' then 'Haryana'
+	 when Location like '%Assam%' then 'Assam'
+	 when Location like '%Manipur%' then 'Manipur'
+	 when Location like '%Sikkim%' then 'Sikkim'
+	 when Location like '%Arunachal Pradesh%' then 'Arunachal Pradesh'
+	 when Location like '%Bihar%' then 'Bihar'
+	 when Location like '%Chhattisgarh%' then 'Chhattisgarh'
+	 when Location like '%Delhi%' then 'Delhi'
+	 when location like '%Goa%' then 'Goa'
+	 when location like '%Gujarat%' then 'Gujarat'
+     when location like '%Himachal Pradesh%' then 'Himachal Pradesh'
+	 when location like '%Jammu & Kashmir%' then 'Jammu & Kashmir'
+	 when location like '%Jharkhand%' then 'Jharkhand'
+	 when location like '%Karnataka%' or location like '%Bangalore%' or location like '%Bengaluru%' then 'Karnataka'
+	 when location like '%Kerala%' then 'Kerala'
+	 when location like '%Maharashtra%' or location like '%Mumbai%' then 'Maharashtra'
+	 when location like '%Madhya Pradesh%' then 'Madhya Pradesh'
+	 when location like '%Mizoram%' then 'Mizoram'
+	 when location like '%Meghalaya%' then 'Meghalaya'
+	 when location like '%Nagaland%' then 'Nagaland'
+     when location like '%Odisha%' then 'Odisha'
+	 when location like '%Punjab%' then 'Punjab'
+	 when location like '%Rajasthan%' then 'Rajasthan'
+	 when location like '%Tamil Nadu%' or location like '%Madurai%' then 'Tamil Nadu'
+	 when location like '%Tripura%' then 'Tripura'
+	 when location like '%Telangana%' then 'Telangana'
+	 when location like '%Uttar Pradesh%' or location like '%Lucknow%' then 'Uttar Pradesh'
+	 when location like '%Uttarakhand%' then 'Uttarakhand'
+	 when location like '%West Bengal%' or location like '%Kolkata%' then 'West Bengal'
+	 when location like '%Andaman & Nicobar%' then 'Andaman & Nicobar (UT)'
+	 when location like '%Uttarakhand%' then 'Uttarakhand'
+	 when location like '%Chandigarh%' then 'Chandigarh (UT)'
+	 when location like '%Dadra & Nagar Haveli%' then 'Dadra & Nagar Haveli (UT)'
+	 when location like '%Daman & Diu%' then 'Daman & Diu (UT)'
+	 when location like '%Lakshadweep%' then 'Lakshadweep (UT)'
+	 when location like '%Puducherry%' then 'Puducherry (UT)'
+	 else location
+     end
+	 as State
+from book4;
+
+
+select j.Job_id, j.Job_title, c.Company_id, c.Company_name ,j.Location, j.State, j.Work_model, j.Level_of_job, c.Employee_count, 
+c.Followers, c.Industry, d.detail_id, d.No_of_applicants
+from details_table d 
+inner join 
+job_table j 
+on d.Detail_id=j.detail_id 
+inner join 
+company_table c
+on j.company_name=c.company_name;
+
+SELECT *,REPLACE(Employee_count, 'employees', '') as a, REPLACE(Followers, 'followers', '') as b from book5;
