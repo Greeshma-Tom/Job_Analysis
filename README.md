@@ -1,2 +1,5 @@
 # Job_Analysis
-Scraped data regarding diffrent jobs from LikedIn using Selenium and Beautifulsoup library in Python. Derived insights from created tables using SQL and build an interactive dashboard in Excel to visualize them.
+Scraped data regarding different jobs from LinkedIn and
+created an interactive dashboard with generated insights.
+
+Tech Stack : Python | MS SQL | MS Exce
